@@ -1,14 +1,11 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class BankAccount{
-    public float saldo;
+    public float balance;
     private String owner;
     float[] transactions = new float[100];
   //  ArrayList<Float> transaction = new ArrayList<>();
 
     public BankAccount(float saldo){
-        this.saldo = saldo;
+        this.balance = saldo;
     }
     public void setOwner(String owner){
         this.owner = owner;
@@ -20,15 +17,15 @@ public class BankAccount{
     @Override
     public String toString(){
         String str;
-        str= owner+" : "+saldo;
+        str= owner+" : "+ balance;
         return str;
     }
 
     public void withdrawAmount(int amount) {
-       saldo= saldo-amount;
+       balance = balance -amount;
     }
 
-    public float getSaldo() {
-        return this.saldo;
+    public float getBalance() {
+        return this.balance;
     }
 }

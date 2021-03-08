@@ -1,3 +1,11 @@
+/**
+ * Matador
+ * En digital version af det klassiske matador spil
+ * Anvendt i undervisingen på Dat 1, cphbusiness academy
+ *
+ * @author Tess Gaston
+ * @version 1.0
+ */
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,55 +16,40 @@ import java.util.Scanner;
 
 public class Main {
 
-    //todo: create ArrayList as the system should support unknown numbers of players
-    //private static BankAccount[] accounts = new BankAccount[3];
-
     public static ArrayList<BankAccount> accounts = new ArrayList<>();
-    public static UI ui;
+    public static UI ui = new UI();
 
 
     public static void main(String[] args) throws IOException {
-
-     //  assignPlayer(account1);
-     //  assignPlayer(account2);
-     //  assignPlayer(account3);
+        //Hvis et spil er igang, vil der blive loadet data fra sidste session, ellers vil brugeren blive bedt om at registrere deltagere
         try{
             readAccountData();
         }catch(IOException e){
             System.out.println("Velkommen til Matador ");
-            //todo: opret UI klasse så brugeren kan oprette konti til alle deltagere
-            ui = new UI();
             ui.createAccounts();
         }
-
+        //print information om de kontoer der er i spillet
         printAccounts();
-        //todo: erstat account1 med accounts[0]
-        //accounts[0].withdrawAmount();
 
-
+       //Test af metode til at trække beløb fra den første konto (accounts.get(0)) der blev oprettet i spillet
 
         int input=0;
         try {
             input = Integer.parseInt(UI.getUserInput("Træk beløb fra "+accounts.get(0).getOwner()+"'s konto"));
         }catch (InputMismatchException e){
             System.out.println(e.toString());
-            //    input = Integer.parseInt( Main.getUserInput("Træk beløb fra "+this.owner+"'s konto"));
         }
 
         accounts.get(0).withdrawAmount(input);
-
-
-
-        //accounts[2].withdrawAmount();
         // gem spillets tilstand
         saveGameData();
     }
 
-    //todo:
-    // create a scanner and load file
-    // for each line in file
-    //      create bankAccount and add it to accounts array
-    //      set Owner on bankAccount
+    /**
+     * Denne metode læser sidste sessions spildata fra en tekstfil, hvor hver linie repræsenterer en spillers konto
+     * For hver linie i tekstfilen oprettes en konto med liniens saldo og ejernavn
+     * @throws IOException
+     */
 
     public static void readAccountData() throws IOException{
         String [] accountLine;
@@ -69,34 +62,37 @@ public class Main {
             String line = scan.nextLine();
             accountLine = line.split(":");
             accounts.add(new BankAccount(Float.parseFloat(accountLine[1])));
-            int index = accounts.size();
-            accounts.get(index-1).setOwner(accountLine[0]);
+            int index = accounts.size()-1;//minus 1 fordi arrays starter med index 0
+            accounts.get(index).setOwner(accountLine[0]);
             count++;
         }
 
     }
 
+    /**
+     * Denne metode gemmer sessionen tilstand, dvs listen af konti i formen ejernavn:saldo
+     */
     public static void saveGameData(){
         String gamedata = "";
+        //todo: kald metoden printAccounts() metoden istedet for at gennemløbe igen (Dont Repeat yourself)
         for (BankAccount a:accounts) {
-            gamedata = gamedata + a.getOwner()+":"+a.getSaldo()+"\n";
+            gamedata = gamedata + a.getOwner()+":"+a.getBalance()+"\n";
         }
         try{
             FileWriter writer = new FileWriter("data.txt");
             writer.write(gamedata);
             writer.close();
-
         }catch (IOException e){
             System.out.println(e.getCause());
         }
     }
 
+    /**
+     * Denne metode printer alle konti ud
+     */
     public static void printAccounts(){
         for (BankAccount a:accounts) {
             System.out.println(a);
         }
     }
-
-
-
 }
