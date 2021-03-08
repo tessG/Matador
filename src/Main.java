@@ -21,7 +21,7 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-        //Hvis et spil er igang, vil der blive loadet data fra sidste session, ellers vil brugeren blive bedt om at registrere deltagere
+        //Hvis et spil er i gang, vil der blive loadet data fra sidste session, ellers vil brugeren blive bedt om at registrere deltagere
         try{
             readAccountData();
         }catch(IOException e){
@@ -70,7 +70,7 @@ public class Main {
     }
 
     /**
-     * Denne metode gemmer sessionen tilstand, dvs listen af konti i formen ejernavn:saldo
+     * Denne metode gemmer sessionens tilstand, dvs listen af konti i formen ejernavn:saldo
      */
     public static void saveGameData(){
         String gamedata = "";

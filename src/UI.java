@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class UI {
 
-
     public void createAccounts(){
         int input = Integer.parseInt(getUserInput("Skriv antal deltagere: "));
         for(int i = 0; i< input; i++){

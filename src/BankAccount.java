@@ -1,8 +1,10 @@
 public class BankAccount{
     public float balance;
     private String owner;
+    //todo: Er denne overhovedet nødvendig? Slet evt. Eller lav om til en ArrayList
+
     float[] transactions = new float[100];
-  //  ArrayList<Float> transaction = new ArrayList<>();
+   
 
     public BankAccount(float saldo){
         this.balance = saldo;
