@@ -1,12 +1,12 @@
 ### Matador
 
-##Description:
+## Description:
 This is a project that started out as a way to demonstrate object oriented programming to first year students at CPH Business Academy Spring 2021
 I started with a BankAccount and a Main class, then came a UI class
 
 In the following weeks it will mutate into a digital version of the classic board game Monopoly
 
-##Functional requirements (in Danish):
+## Functional requirements (in Danish):
 
 Spilfirmaet Joker skal have bygget en online version af det klassiske brætspil Matador.
 Spillet skal kunne spilles ad flere omgange, og af spiller der sidder i hver sin ende af verdenen.
