@@ -1,4 +1,4 @@
-### Matador
+# Matador
 
 ## Description:
 This is a project that started out as a way to demonstrate object oriented programming to first year students at CPH Business Academy Spring 2021
