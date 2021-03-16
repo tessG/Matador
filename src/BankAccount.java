@@ -24,7 +24,7 @@ public class BankAccount{
     }
 
     public void withdrawAmount(int amount) {
-       balance = balance -amount;
+        balance = balance -amount;
     }
 
     public float getBalance() {
