@@ -17,7 +17,7 @@ public class Main {
 
     public static ArrayList<Player> players = new ArrayList<>();
     public static UI ui = new UI();
-
+    public static Board board;
 
     public static void main(String[] args) throws IOException {
         System.out.println("Velkommen til Matador ");
@@ -34,21 +34,16 @@ public class Main {
         //print information om de kontoer der er i spillet
         System.out.println(getPlayerData());
 
-        //Test af metode til at trække beløb fra den første konto (accounts.get(0)) der blev oprettet i spillet
-        /*
-        int input=0;
-        try {
-            input = Integer.parseInt(UI.getUserInput("Træk beløb fra "+accounts.get(0).getOwner()+"'s konto"));
-        }catch (InputMismatchException e){
-            System.out.println(e.toString());
-        }
 
-       // accounts.get(0).withdrawAmount(input);*/
+
+       board = new Board();
+     // board.getFields()
+
+
+
+
+
         // gem spillets tilstand
-
-
-        House h = new House(1000, 2);
-
         saveGameData();
     }
 
