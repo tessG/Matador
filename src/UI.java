@@ -39,4 +39,27 @@ public class UI {
         String input = scan.nextLine();
         return input;
     }
+
+
+/**
+ * Denne metode viser brugeren hvilket felt spilleren er landet på
+ *
+ * */
+    public void showActionMessage(String msg)
+    {
+        String input = getUserInput(msg + "Tast Y hvis du er indforstået.");
+        while (input.toUpperCase().equals("Y") || input.toUpperCase().equals("N")) {
+
+            if (input.toUpperCase().equals("Y")) {
+                System.out.println("Du har købet landet, tillykke!");
+                break;
+            }
+            if (input.toUpperCase().equals("N")) {
+                System.out.println("Du har ikke købt landet.");
+                break;
+            } else {
+                System.out.println("Dit input giver desværre ingen mening.");
+            }
+        }
+}
 }

@@ -23,10 +23,13 @@ public class BankAccount{
         return str;
     }
 
-    public void withdrawAmount(int amount) {
-        balance = balance -amount;
-    }
+    public void updateBalance(int amount) {
 
+        balance = balance + amount;
+    }
+    public float setBalance(int amount) {
+        return balance = amount;
+    }
     public float getBalance() {
         return this.balance;
     }

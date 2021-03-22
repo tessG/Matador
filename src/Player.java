@@ -13,4 +13,8 @@ public class Player {
         String str = name +" : "+this.account.getBalance();
         return str;
     }
+    public void doTransaction(int amount)
+    {
+        account.setBalance(amount);
+    }
 }

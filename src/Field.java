@@ -7,4 +7,5 @@ public class Field {
         this.id = id;
         System.out.println(this.id + " : " + this.label);
     }
+
 }

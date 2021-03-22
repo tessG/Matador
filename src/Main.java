@@ -37,16 +37,34 @@ public class Main {
 
 
        board = new Board();
-     // board.getFields()
-
-
-
-
+     // board.getFields();
+     doTurn(players.get(0));
 
         // gem spillets tilstand
         saveGameData();
     }
 
+public static void doTurn(Player player){
+    Dice d = new Dice();
+    int sum = d.throwDice();
+
+   // int currentPosition = player.updatePosition(sum);
+    int currentPosition = 2;
+    int newPosition = sum+currentPosition;
+
+    Field f =  board.getField(newPosition);
+    Action a = null;
+   if(f instanceof Start) {
+       Start sf =  (Start)f;
+       a = sf.getAction();
+    }else if (f instanceof Land){
+       Land lf = (Land)f;
+       a = lf.getAction();
+   }
+    System.out.println(f.label);
+    ui.showActionMessage(a.msg);
+    player.doTransaction(a.amount);
+}
     /**
      * Denne metode læser sidste sessions spildata fra en tekstfil, hvor hver linie repræsenterer en spillers konto
      * For hver linie i tekstfilen oprettes en konto med liniens saldo og ejernavn
@@ -72,10 +90,6 @@ public class Main {
      */
     public static void saveGameData(){
         String gamedata = "";
-        //todo: kald metoden printAccounts() metoden istedet for at gennemløbe igen (Dont Repeat yourself)
-        //for (BankAccount a:accounts) {
-          //  gamedata = gamedata + a.getOwner()+":"+a.getBalance()+"\n";
-        //}
 
         gamedata = getPlayerData();
 

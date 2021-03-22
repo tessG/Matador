@@ -3,4 +3,5 @@ public class Consequence extends Field {
         super( id,label);
         System.out.println("handlingsfelt");
     }
+
 }
