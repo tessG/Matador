@@ -2,26 +2,42 @@ import java.util.ArrayList;
 
 class Controller{
     public static Player currentPlayer;
-
     public static UI UI;
     //todo: change Filereader datatype to IO interface
-    public static FileReader io;
+    public static IO io;
     public static Board board;
     public static int playerCount=0;
-//todo: make enum for various data sources
+    //ENUM
+    enum Datasource{
+        DATABASE,
+        CSVFILE
+    }
+    private static Datasource src = Datasource.DATABASE;
+    private static String path;
+    //todo: make enum for various data sources
 
 
     public static void loadData(){
-        io = new FileReader();// todo: use a getIO() method to instiate the reader/connector dynamically
+        io = getIO();// new FileReader();// todo: use a getIO() method to instiate the reader/connector dynamically
+
         UI = new UI();
-
-        String[] fields_data = io.readFieldData("fields.csv");
-
+        String[] fields_data = io.readFieldData(path);
         board = new Board(fields_data);
         //  String[] cards_data = io.readCardData(null);
         //  board.setCards(cards_data);
-        Main.players = io.readGameData();
+       // Main.players = io.readGameData();
 
+    }
+
+    public static IO getIO() {
+        if(src == Datasource.DATABASE){
+            path = null;
+            return new DBConnector();
+        }else if (src == Datasource.CSVFILE){
+            path = "fields.csv";
+            return new FileReader();
+        }
+        return null;
     }
 
 

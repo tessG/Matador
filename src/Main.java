@@ -2,14 +2,13 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static ArrayList<Player> players;
-    // private static Controller controller;
+    public static ArrayList<Player> players = new ArrayList<Player>();
 
     public static void main(String[] args) {
 
         Controller.loadData();
-        printWelcomeToPlayers();
         startOrContinueGame();
+        printWelcomeToPlayers();
         Controller.runGameLoop();
 
         // deleteSavedGame();
@@ -20,6 +19,7 @@ public class Main {
      if (players.size() == 0) {
          players = Controller.UI.registerPlayers();
      } else {
+
          Controller.UI.promptNewGame();
      }
  }

@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class FileReader {
+public class FileReader implements IO {
 
     public String[] readFieldData(String path) {
         String[] contents = new String[40];

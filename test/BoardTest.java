@@ -14,7 +14,7 @@ public class BoardTest {
 
     @Before
   public void setUp(){
-        Controller.io = new FileReader();
+        Controller.io = Controller.getIO();
         String[] config = Controller.io.readFieldData("fields.csv");
         b = new Board(config);
   }
