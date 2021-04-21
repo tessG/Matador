@@ -20,7 +20,9 @@ public class Player {
         this.bankAccount = new BankAccount(balance);
         counter++;
     }
+    public Player(int id, String name, int balance,int position, int turnsleft, int next) {
 
+    }
     /* Getters and setters */
     public String getName() {
         return name;

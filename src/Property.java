@@ -37,7 +37,7 @@ abstract public class Property extends Field {
             a.setResponseMsg("buy");
         } else if (owner == Controller.currentPlayer) {
             a.setMsg(alreadyOwnedStr);
-            a.setResponseMsg(null);
+            a.setResponseMsg(null);//tjek om du har alle felter i serien, build
         } else {
             a.setMsg(ownedByAnotherPlayerStr);
             a.setResponseMsg("pay");

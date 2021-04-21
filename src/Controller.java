@@ -26,7 +26,6 @@ class Controller{
         //  String[] cards_data = io.readCardData(null);
         //  board.setCards(cards_data);
        // Main.players = io.readGameData();
-
     }
 
     public static IO getIO() {
@@ -61,10 +60,10 @@ class Controller{
             input = UI.getUserInput("Klar til næste runde? Y/N: ");
             playerCount++;
         }
-
         // User has chosen to exit the program
-        System.out.println("Afslutter spillet. Tak for denne gang! ");
         io.saveGameData();
+        System.out.println("Afslutter spillet. Tak for denne gang! ");
+
     }
 
     public static void doTurn(Player player){
@@ -89,8 +88,6 @@ class Controller{
                     fp.updateOwnership(currentPlayer);
                     //Evt prompt med option to buy houses her - tjek reglerne om man må det det i samme runde som  man opnår monopol.
                     currentPlayer.doTransaction(null, -fp.getCost());
-
-
                 }else if(a.getResponseMsg().equals("pay")){
                     // Der er blevet sagt ok til at betale udgift til en grund/forretning
                     currentPlayer.doTransaction(fp.getOwner(), fp.getIncome());
