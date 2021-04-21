@@ -11,7 +11,6 @@ public class Board {
      */
     public Board(String [] fields) {
         setFields(fields);
-
     }
    public void setCards( String [] cards){
         actionCards = new CardDeck(cards);

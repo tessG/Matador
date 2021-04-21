@@ -11,15 +11,16 @@ abstract public class Property extends Field {
         this.cost = cost;
         this.income = income;
         this.seriesID = seriesID;
-
-
     }
 
     private void setMessages() {
        doYouWantToBuyStr = Controller.currentPlayer.getName()+" er landet på " + this.label + " prisen er " + this.cost + ".\n Vil du købe? Y/N: \n";
        alreadyOwnedStr = Controller.currentPlayer.getName()+" er landet på "+this.label+" som du ejer\n Tast y for at fortsætte:";
+       try{
        ownedByAnotherPlayerStr = Controller.currentPlayer.getName()+" er landet på "+this.label+" som ejes af "+ owner.getName() + " Der skal betales " +this.income+" til ejeren.\n Tast Y for at betale:\n" ;
-
+       }catch(NullPointerException e){
+           System.out.println("The field is not yet owned by anybody");
+       }
     }
 
     public String toString() {
